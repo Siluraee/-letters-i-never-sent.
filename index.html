@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Letters I Never Sent</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+  --cream: #f4eee5;
+  --paper: #fffaf0;
+  --brown: #675247;
+  --rose: #a67c78;
+  --dark: #49382f;
+  --envelope: #d9c5b0;
+  --envelope-light: #e8d8c5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--brown);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+}
+
+/* VINTAGE PAPER TEXTURE */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(100,75,55,0.025) 4px
+    );
+  z-index: 20;
+}
+
+/* HEADER */
+
+header {
+  text-align: center;
+  padding: 85px 20px 35px;
+  position: relative;
+}
+
+.small-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #a18c7e;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-weight: normal;
+  font-size: clamp(55px, 11vw, 95px);
+  color: var(--dark);
+  margin: 30px 0 10px;
+}
+
+.subtitle {
+  font-size: 19px;
+  font-style: italic;
+  color: #978477;
+  letter-spacing: 1px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 40px auto;
+  color: var(--rose);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  width: 70px;
+  height: 1px;
+  background: #cdbcb0;
+}
+
+/* WITHERED ROSES */
+
+.rose-decoration {
+  position: absolute;
+  font-size: 55px;
+  opacity: 0.35;
+  filter: grayscale(65%) sepia(30%);
+  pointer-events: none;
+}
+
+.rose-left {
+  left: 5%;
+  top: 45px;
+  transform: rotate(-25deg);
+}
+
+.rose-right {
+  right: 5%;
+  top: 100px;
+  transform: rotate(25deg);
+}
+
+/* INTRODUCTION */
+
+.introduction {
+  text-align: center;
+  max-width: 480px;
+  padding: 0 30px;
+  margin: 0 auto 65px;
+  font-size: 19px;
+  line-height: 1.8;
+  font-style: italic;
+  color: #877468;
+}
+
+/* POETRY ARCHIVE */
+
+.archive {
+  max-width: 1050px;
+  margin: auto;
+  padding: 20px 20px 110px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 85px;
+  justify-items: center;
+}
+
+/* ENVELOPE */
+
+.envelope-container {
+  width: min(100%, 330px);
+  position: relative;
+  padding: 35px 0;
+  transform: rotate(-4deg);
+  transition: transform 0.4s ease;
+}
+
+.envelope-container:hover {
+  transform: rotate(0deg) translateY(-6px);
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.55;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: block;
+  filter: drop-shadow(
+    3px 12px 12px rgba(76,55,42,0.17)
+  );
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #cbb49d;
+  border-radius: 3px;
+}
+
+/* OPENING FLAP */
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 58%;
+  background: #e5d3be;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.75s ease;
+  z-index: 5;
+  backface-visibility: hidden;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: var(--envelope-light);
+  clip-path: polygon(
+    0 0,
+    50% 55%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+  z-index: 3;
+}
+
+.envelope-bottom {
+  position: absolute;
+  inset: 0;
+  background: #ddc7af;
+  clip-path: polygon(
+    0 100%,
+    50% 43%,
+    100% 100%
+  );
+  z-index: 4;
+}
+
+/* ANTIQUE WAX SEAL */
+
+.wax-seal {
+  position: absolute;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #bd9690,
+      #8c625e
+    );
+  border: 3px double #b99189;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Great Vibes', cursive;
+  font-size: 25px;
+  color: #ead8ce;
+  box-shadow: 1px 3px 5px #8d716a55;
+  transition: opacity 0.3s;
+}
+
+/* LETTER INSIDE ENVELOPE */
+
+.letter-preview {
+  position: absolute;
+  width: 83%;
+  height: 85%;
+  background: var(--paper);
+  left: 8.5%;
+  bottom: 7%;
+  z-index: 2;
+  border: 1px solid #e0d2c1;
+  transition: transform 0.85s ease;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 15px;
+  font-style: italic;
+  color: #b09b8d;
+  font-size: 15px;
+}
+
+/* ENVELOPE ANIMATION */
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope.open .letter-preview {
+  transform: translateY(-65%);
+  transition-delay: 0.35s;
+}
+
+.envelope.open .wax-seal {
+  opacity: 0;
+}
+
+/* ENVELOPE TITLE */
+
+.envelope-label {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.envelope-label h3 {
+  font-size: 25px;
+  font-weight: 500;
+  font-style: italic;
+  margin: 0;
+  color: var(--dark);
+}
+
+.envelope-label span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #a39285;
+  text-transform: uppercase;
+}
+
+/* DRIED FLOWER DECORATION */
+
+.flower {
+  position: absolute;
+  font-size: 40px;
+  opacity: 0.55;
+  pointer-events: none;
+  filter: grayscale(65%) sepia(25%);
+  top: -10px;
+  right: -10px;
+  transform: rotate(25deg);
+}
+
+/* POEM OVERLAY */
+
+.poem-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(46,35,30,0.75);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.poem-overlay.visible {
+  display: flex;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* UNFOLDED LETTER */
+
+.poem-paper {
+  background: var(--paper);
+  width: min(100%, 650px);
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 60px 45px;
+  position: relative;
+  border: 1px solid #dfd0bd;
+  box-shadow:
+    0 15px 55px rgba(0,0,0,0.25);
+  animation: unfold 0.7s ease;
+  margin: auto;
+}
+
+@keyframes unfold {
+  from {
+    opacity: 0;
+    transform: translateY(45px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.poem-paper::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid #e7d9c9;
+  pointer-events: none;
+}
+
+/* CLOSE BUTTON */
+
+.close-poem {
+  position: sticky;
+  top: 0;
+  float: right;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #9c8476;
+  cursor: pointer;
+  z-index: 2;
+  padding: 5px 10px;
+}
+
+/* POEM HEADING */
+
+.poem-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.poem-heading h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 49px;
+  font-weight: normal;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.poem-heading p {
+  font-size: 13px;
+  font-style: italic;
+  color: #ad9789;
+}
+
+/* POEM TEXT */
+
+.poem-text {
+  font-size: 19px;
+  line-height: 1.85;
+  color: #604f45;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.poem-ending {
+  text-align: center;
+  margin-top: 55px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 27px;
+  color: var(--rose);
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 45px 20px 65px;
+  border-top: 1px solid #d9cbbd;
+  font-style: italic;
+  font-size: 17px;
+  color: #a08b7e;
+}
+
+footer small {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+/* IPHONE AND MOBILE */
+
+@media(max-width: 600px) {
+
+  header {
+    padding-top: 70px;
+  }
+
+  h1 {
+    font-size: 62px;
+  }
+
+  .archive {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    padding: 20px 42px 80px;
+  }
+
+  .envelope-container {
+    max-width: 300px;
+  }
+
+  .poem-paper {
+    padding: 40px 25px;
+  }
+
+  .poem-text {
+    font-size: 17px;
+  }
+
+  .rose-decoration {
+    font-size: 35px;
+  }
+
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- WEBSITE HEADER -->
+
+<header>
+
+  <div class="rose-decoration rose-left">🥀</div>
+  <div class="rose-decoration rose-right">🥀</div>
+
+  <div class="small-heading">
+    A PERSONAL COLLECTION OF WORDS
+  </div>
+
+  <h1>letters i never sent.</h1>
+
+  <p class="subtitle">
+    an archive of everything i couldn't say.
+  </p>
+
+  <div class="divider">✿</div>
+
+</header>
+
+<!-- INTRODUCTION -->
+
+<section class="introduction">
+
+  Some words were never meant to be spoken.
+  Some feelings were never meant to be understood.
+
+  <br><br>
+
+  Here lie the letters I could never bring myself to send.
+
+  <br><br>
+
+  Take one. Open it gently.
+
+</section>
+
+<!-- SINGLE ENVELOPE -->
+
+<main class="archive">
+
+  <div class="envelope-container">
+
+    <button
+      class="envelope"
+      id="envelope"
+      aria-label="Open The worst daughter in the world"
+    >
+
+      <div class="envelope-back"></div>
+
+      <div class="letter-preview">
+        a letter for you...
+      </div>
+
+      <div class="flap"></div>
+
+      <div class="envelope-front"></div>
+
+      <div class="envelope-bottom"></div>
+
+      <div class="wax-seal">L</div>
+
+    </button>
+
+    <div class="flower">🥀</div>
+
+    <div class="envelope-label">
+
+      <h3>The worst daughter in the world</h3>
+
+      <span>letter no. 001</span>
+
+    </div>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+  For all the things that remained unsaid.
+
+  <small>
+    Written with love, and a little grief.
+  </small>
+
+</footer>
+
+<!-- POETRY LETTER -->
+
+<div
+  class="poem-overlay"
+  id="poemOverlay"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Poetry letter"
+>
+
+  <article class="poem-paper" id="poemPaper">
+
+    <button
+      class="close-poem"
+      id="closePoem"
+      aria-label="Close poem"
+    >
+      ×
+    </button>
+
+    <div class="poem-heading">
+
+      <h2>The worst daughter in the world</h2>
+
+      <p>a letter from the archive</p>
+
+    </div>
+
+    <div class="poem-text" id="poemText"></div>
+
+    <div class="poem-ending">
+      yours, always.
+    </div>
+
+  </article>
+
+</div>
+
+<script>
+
+/*
+=======================================
+YOUR POEM
+=======================================
+*/
+
+const poem = `We don’t talk anymore.
+At first, it was your fault.
+Then somehow, it became mine.
+And picking up the phone became the hardest thing I could do.
+
+Grey hairs grow where they never used to.
+Wrinkles carve themselves into a face I once knew by heart.
+Each line holds a memory I was never a part of.
+Each year carries a version of you I never got to meet.
+You’ve found new hobbies, new habits, a life I know nothing about.
+You’ve changed so much, Dad.
+Sometimes I wonder if I would recognize you in a crowded room.
+
+Every time I pick up the phone,
+I hear the years where I wasn’t there.
+Every time I pick up the phone, Dad,
+I remember the home I can never return to.
+The sealed door of your sold house.
+The father I can never live with again.
+
+Six months without a call.
+And when I finally heard your voice,
+we spoke for ten minutes and thirty-four seconds.
+Ten minutes and thirty-four seconds
+to make up for six months of silence.
+But silence has a language of its own,
+and it spoke more fluently than either of us.
+
+We used to know each other without speaking.
+Now we speak as though we’ve never met.
+As though I’m a stranger asking about your day,
+and you’re a stranger telling me about your life.
+I wonder when we became two people
+who only know each other through memories.
+
+We don’t even speak the same language anymore.
+I stumble over words I once knew.
+You tell me things I should already know.
+Every conversation feels like an introduction.
+Every goodbye feels like another beginning
+we both know we can never finish.
+
+You are the only person—
+who can make me cry within seconds.
+Yet I stare at your name on my phone
+and let it ring until the silence returns.
+I don’t know what frightens me more,
+hearing your voice
+or realizing how unfamiliar it’s become.
+
+I wonder if you notice how much I’ve changed, too.
+If you hear the years in my voice.
+If you mourn the little girl who once lived with you,
+the same way I mourn the father who once lived with me.
+I wonder if you ever look at the phone
+and find yourself unable to call.
+
+We don’t talk anymore.
+At first, it was your fault.
+Then it became mine.
+And somewhere between the two,
+we lost the years we were supposed to have together.
+
+You’re still alive, Dad.
+You’re still here.
+And somehow, I find myself grieving you
+as though you’ve already gone.
+
+I love you.
+I miss you.
+I wish I knew how to tell you.
+
+But I can’t even pick up the phone.
+
+And that makes me
+the worst daughter in the world.`;
+
+/*
+=======================================
+ENVELOPE ANIMATION
+=======================================
+*/
+
+const envelope = document.getElementById("envelope");
+
+const overlay = document.getElementById("poemOverlay");
+
+const poemText = document.getElementById("poemText");
+
+const closeButton = document.getElementById("closePoem");
+
+const paper = document.getElementById("poemPaper");
+
+let openTimer = null;
+
+poemText.textContent = poem;
+
+/* OPEN ENVELOPE */
+
+envelope.addEventListener("click", () => {
+
+  if (openTimer) {
+    clearTimeout(openTimer);
+  }
+
+  envelope.classList.add("open");
+
+  openTimer = setTimeout(() => {
+
+    overlay.classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+    paper.scrollTop = 0;
+
+    closeButton.focus();
+
+    openTimer = null;
+
+  }, 1150);
+
+});
+
+/* CLOSE LETTER */
+
+function closePoem() {
+
+  if (openTimer) {
+    clearTimeout(openTimer);
+    openTimer = null;
+  }
+
+  overlay.classList.remove("visible");
+
+  document.body.style.overflow = "";
+
+  envelope.classList.remove("open");
+
+  envelope.focus();
+
+}
+
+closeButton.addEventListener("click", closePoem);
+
+/* TAP OUTSIDE TO CLOSE */
+
+overlay.addEventListener("click", (event) => {
+
+  if (event.target === overlay) {
+    closePoem();
+  }
+
+});
+
+/* ESCAPE KEY */
+
+document.addEventListener("keydown", (event) => {
+
+  if (
+    event.key === "Escape" &&
+    overlay.classList.contains("visible")
+  ) {
+    closePoem();
+  }
+
+});
+
+</script>
+
+</body>
+</html>
