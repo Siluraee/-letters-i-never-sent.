@@ -1,64 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#140d0c">
-<meta name="description" content="An archive of everything I couldn't say.">
-<title>Letters I Never Sent — A Private Archive</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#160e0e">
+
+<title>letters i never sent.</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
-/* =====================================================
-   LETTERS I NEVER SENT
-   THE CANDLELIT ARCHIVE
-   ===================================================== */
+/* ============================================
+   COLORS
+============================================ */
 
 :root {
-  --night: #140d0c;
-  --night-soft: #211513;
-  --mahogany: #38231d;
-  --burgundy: #682b36;
-  --wine: #843d49;
-  --rose: #ad6770;
+  --background: #160e0e;
+  --background-light: #291918;
 
-  --gold-dark: #876849;
-  --gold: #c5a17a;
-  --gold-light: #e0c29a;
+  --burgundy: #70303b;
+  --rose: #a55b65;
 
-  --ivory: #f1e2ca;
-  --cream: #dcc5a8;
-  --muted: #b79b86;
+  --gold: #c6a47c;
+  --gold-light: #e2c59d;
 
-  --paper-light: #f3e5cc;
-  --paper-mid: #e5cfac;
-  --paper-dark: #c8a981;
-  --ink: #4b352b;
+  --cream: #efdec7;
+  --muted: #c3a996;
+
+  --paper: #ead7b8;
+  --ink: #49372d;
 
   --ease: cubic-bezier(.22,1,.36,1);
 }
 
-* {
+/* ============================================
+   RESET
+============================================ */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
+  width: 100%;
+  min-height: 100%;
   scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
+  width: 100%;
   min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
   overflow-x: hidden;
 
-  background: var(--night);
-  color: var(--ivory);
+  background: var(--background);
 
-  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--cream);
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
 }
 
 body.modal-open {
@@ -71,649 +83,478 @@ input {
 }
 
 button {
+  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 
 button:focus-visible,
 input:focus-visible {
   outline: 2px solid var(--gold-light);
-  outline-offset: 5px;
+  outline-offset: 4px;
 }
 
 [hidden] {
   display: none !important;
 }
 
-::selection {
-  background: #8c4651;
-  color: #fff0d8;
-}
+/* ============================================
+   BACKGROUND
+============================================ */
 
-/* =====================================================
-   BACKGROUND — AN OLD DARK ROOM
-   ===================================================== */
-
-.room {
+.background {
   position: fixed;
+
   inset: 0;
-  overflow: hidden;
+
+  z-index: -3;
+
   pointer-events: none;
-  z-index: 0;
 
   background:
     radial-gradient(
-      ellipse at 78% 19%,
-      rgba(153, 83, 39, .22),
+      ellipse at 76% 17%,
+      rgba(153,91,51,.25),
       transparent 42%
     ),
 
     radial-gradient(
-      ellipse at 18% 60%,
-      rgba(106, 39, 43, .15),
-      transparent 46%
+      ellipse at 17% 75%,
+      rgba(118,48,50,.13),
+      transparent 45%
     ),
 
     linear-gradient(
-      145deg,
-      #33211d 0%,
-      #211512 37%,
-      #140d0d 78%,
-      #0d0909 100%
+      150deg,
+      #33201c 0%,
+      #211514 40%,
+      #130d0d 100%
     );
 }
 
-.room::before {
+.background::after {
   content: "";
+
   position: absolute;
-  inset: 0;
 
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 115px,
-      rgba(0,0,0,.055) 116px,
-      transparent 119px
-    ),
-
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 4px,
-      rgba(255,235,205,.018) 5px
-    );
-
-  opacity: .65;
-}
-
-.room::after {
-  content: "";
-  position: absolute;
   inset: 0;
 
   background:
     radial-gradient(
-      ellipse at 50% 43%,
-      transparent 15%,
-      rgba(0,0,0,.50) 100%
+      ellipse at center,
+      transparent 25%,
+      rgba(0,0,0,.35) 100%
     );
 }
 
-/* Gentle, moving candlelight */
+/* ============================================
+   CANDLELIGHT
+============================================ */
 
-.ambient-light {
+.candlelight {
   position: fixed;
-  z-index: 1;
-  pointer-events: none;
-  border-radius: 50%;
-  filter: blur(50px);
-  mix-blend-mode: screen;
-}
 
-.ambient-light.one {
-  width: 550px;
-  height: 550px;
-  right: -170px;
-  top: -110px;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(255,168,79,.25) 0%,
-      rgba(221,112,42,.12) 36%,
-      transparent 72%
-    );
-
-  animation: glowOne 4.1s ease-in-out infinite alternate;
-}
-
-.ambient-light.two {
-  width: 400px;
-  height: 480px;
-  left: -170px;
-  bottom: 2%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(230,126,56,.17),
-      transparent 70%
-    );
-
-  animation: glowTwo 5.2s ease-in-out infinite alternate;
-}
-
-.ambient-light.three {
-  width: 550px;
-  height: 350px;
-  left: 50%;
-  top: 45%;
-  transform: translateX(-50%);
-
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(196,110,55,.095),
-      transparent 70%
-    );
-
-  animation: glowThree 6s ease-in-out infinite alternate;
-}
-
-@keyframes glowOne {
-  0% {
-    opacity: .58;
-    transform: scale(.94) translate(0,0);
-  }
-
-  40% {
-    opacity: .91;
-  }
-
-  100% {
-    opacity: .70;
-    transform: scale(1.12) translate(-14px,18px);
-  }
-}
-
-@keyframes glowTwo {
-  from {
-    opacity: .55;
-    transform: scale(.94);
-  }
-
-  to {
-    opacity: .95;
-    transform: scale(1.12);
-  }
-}
-
-@keyframes glowThree {
-  from {
-    opacity: .45;
-  }
-
-  to {
-    opacity: .85;
-  }
-}
-
-/* Fine antique texture */
-
-.grain {
-  position: fixed;
   inset: 0;
-  z-index: 8;
-  pointer-events: none;
 
-  opacity: .18;
+  z-index: -2;
 
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      rgba(255,255,255,.025) 1px,
-      transparent 2px,
-      transparent 5px
-    ),
-
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      rgba(0,0,0,.025) 1px,
-      transparent 2px,
-      transparent 7px
-    );
-}
-
-/* =====================================================
-   FLOATING ROSE PETALS
-   ===================================================== */
-
-.petals {
-  position: fixed;
-  inset: 0;
-  z-index: 6;
   overflow: hidden;
-  pointer-events: none;
-}
-
-.petal {
-  position: absolute;
-  top: -50px;
-
-  width: 16px;
-  height: 24px;
-
-  border-radius:
-    78% 12% 74% 17%;
-
-  background:
-    radial-gradient(
-      ellipse at 28% 25%,
-      #c7757b 0%,
-      #973e4c 42%,
-      #5c1e2c 85%
-    );
-
-  box-shadow:
-    inset 2px 2px 4px rgba(255,210,210,.13),
-    2px 4px 8px rgba(0,0,0,.25);
-
-  animation:
-    petalFall linear infinite;
-}
-
-@keyframes petalFall {
-  0% {
-    transform:
-      translate3d(0,-40px,0)
-      rotate(0deg)
-      rotateY(0deg);
-  }
-
-  25% {
-    transform:
-      translate3d(30px,25vh,0)
-      rotate(95deg)
-      rotateY(80deg);
-  }
-
-  50% {
-    transform:
-      translate3d(-15px,52vh,0)
-      rotate(180deg)
-      rotateY(160deg);
-  }
-
-  75% {
-    transform:
-      translate3d(35px,78vh,0)
-      rotate(265deg)
-      rotateY(260deg);
-  }
-
-  100% {
-    transform:
-      translate3d(-20px,110vh,0)
-      rotate(360deg)
-      rotateY(360deg);
-  }
-}
-
-/* =====================================================
-   CANDLE SCENES
-   ===================================================== */
-
-.candle-scene {
-  position: absolute;
-  width: 150px;
-  height: 280px;
 
   pointer-events: none;
-  z-index: 2;
 }
 
-.candle-scene.right {
-  top: 58px;
-  right: max(20px, calc((100vw - 1160px) / 2));
-}
-
-.candle-scene.left {
-  top: 540px;
-  left: max(5px, calc((100vw - 1150px) / 2));
-
-  transform: scale(.78);
-  opacity: .8;
-}
-
-.candle-aura {
+.light {
   position: absolute;
-  width: 280px;
-  height: 310px;
-  top: -60px;
-  left: -65px;
 
   border-radius: 50%;
 
+  filter: blur(55px);
+
+  animation:
+    lightFlicker 4s ease-in-out infinite alternate;
+}
+
+.light.one {
+  width: 460px;
+  height: 460px;
+
+  top: -160px;
+  right: -160px;
+
   background:
     radial-gradient(
-      ellipse,
-      rgba(255,188,90,.30) 0%,
-      rgba(241,125,46,.12) 34%,
+      circle,
+      rgba(255,170,81,.29),
+      rgba(222,110,46,.11) 42%,
+      transparent 73%
+    );
+}
+
+.light.two {
+  width: 420px;
+  height: 420px;
+
+  bottom: -170px;
+  left: -180px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,157,75,.16),
       transparent 72%
     );
 
-  filter: blur(18px);
-
-  animation:
-    candleAura 2.4s ease-in-out infinite alternate;
+  animation-delay: -2s;
 }
 
-@keyframes candleAura {
+@keyframes lightFlicker {
   0% {
     opacity: .55;
     transform: scale(.95);
   }
 
   35% {
-    opacity: .92;
+    opacity: .85;
   }
 
-  70% {
+  65% {
     opacity: .65;
   }
 
   100% {
     opacity: 1;
-    transform: scale(1.09);
+    transform: scale(1.08);
   }
 }
 
-/* Candle base */
+/* ============================================
+   CANDLE
+============================================ */
 
-.candle-stand {
+.candle {
   position: absolute;
-  bottom: 25px;
-  left: 28px;
 
-  width: 96px;
-  height: 18px;
+  width: 95px;
+  height: 195px;
 
-  border-radius: 50%;
+  top: 30px;
+  right: 20px;
 
-  background:
-    linear-gradient(
-      180deg,
-      #e1bf85,
-      #977047 55%,
-      #4e3526
-    );
+  pointer-events: none;
 
-  box-shadow:
-    0 6px 0 #5a3b26,
-    0 15px 20px rgba(0,0,0,.55);
+  opacity: .92;
 }
 
-.candle-stand::after {
-  content: "";
+.candle-glow {
   position: absolute;
 
-  left: 41px;
-  top: 9px;
+  width: 190px;
+  height: 210px;
 
-  width: 14px;
-  height: 20px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #6b4b31,
-      #cfaa70,
-      #63432b
-    );
-
-  z-index: -1;
-}
-
-/* Wax */
-
-.candle-wax {
-  position: absolute;
-  left: 49px;
-  bottom: 41px;
-
-  width: 54px;
-  height: 135px;
-
-  border-radius:
-    7px 7px 5px 5px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #8b674a 0%,
-      #d4ae7c 16%,
-      #f3ddb0 42%,
-      #ead0a1 57%,
-      #ac8057 86%,
-      #775337 100%
-    );
-
-  box-shadow:
-    inset -8px 0 12px rgba(78,46,27,.30),
-    inset 4px 0 8px rgba(255,249,211,.22),
-    0 0 35px rgba(255,174,83,.10);
-}
-
-.candle-wax::before {
-  content: "";
-  position: absolute;
-
-  left: -1px;
-  top: -7px;
-
-  width: 56px;
-  height: 17px;
+  top: -45px;
+  left: -48px;
 
   border-radius: 50%;
 
   background:
     radial-gradient(
       ellipse,
-      #d2ad7d 0%,
-      #f7e3b7 57%,
-      #c39c6d 100%
+      rgba(255,186,95,.36),
+      rgba(255,138,51,.12) 40%,
+      transparent 72%
     );
+
+  filter: blur(17px);
+
+  animation:
+    candleGlow 2.6s ease-in-out infinite alternate;
 }
 
-/* Dripping wax */
+@keyframes candleGlow {
+  from {
+    opacity: .55;
+    transform: scale(.95);
+  }
 
-.wax-drip {
+  to {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+.candle-wax {
   position: absolute;
-  top: 6px;
 
-  width: 9px;
-  border-radius: 0 0 8px 8px;
+  width: 36px;
+  height: 91px;
+
+  left: 30px;
+  bottom: 28px;
+
+  border-radius: 5px 5px 3px 3px;
 
   background:
     linear-gradient(
       90deg,
-      #e4c393,
-      #f4ddb0,
-      #c59c70
-    );
-}
-
-.wax-drip.one {
-  left: 8px;
-  height: 30px;
-}
-
-.wax-drip.two {
-  right: 9px;
-  height: 47px;
-  width: 7px;
-}
-
-.wax-drip.three {
-  left: 27px;
-  height: 16px;
-  width: 6px;
-}
-
-/* Wick */
-
-.candle-wick {
-  position: absolute;
-  bottom: 174px;
-  left: 75px;
-
-  width: 3px;
-  height: 15px;
-
-  border-radius: 2px;
-  background: #2e211a;
-}
-
-/* Flame layers */
-
-.flame {
-  position: absolute;
-  left: 62px;
-  bottom: 183px;
-
-  width: 28px;
-  height: 56px;
-
-  transform-origin: 50% 90%;
-
-  border-radius:
-    75% 8% 72% 40%;
-
-  transform: rotate(43deg);
-
-  background:
-    linear-gradient(
-      130deg,
-      #fff4b8 5%,
-      #ffda83 30%,
-      #ffae43 60%,
-      #e66b27 100%
+      #89664b,
+      #e2c497 30%,
+      #f3ddb4 52%,
+      #b68d66 84%,
+      #78563c
     );
 
   box-shadow:
-    0 0 12px 4px rgba(255,205,112,.70),
-    0 0 30px 12px rgba(255,142,47,.32),
-    0 0 70px 25px rgba(229,113,39,.12);
-
-  filter: blur(.4px);
-
-  animation:
-    flameFlicker 1.65s ease-in-out infinite alternate;
+    inset -5px 0 9px rgba(77,46,26,.24),
+    0 0 22px rgba(255,179,90,.11);
 }
 
-.flame-core {
+.candle-wax::before {
+  content: "";
+
   position: absolute;
-  left: 70px;
-  bottom: 185px;
 
-  width: 12px;
-  height: 32px;
+  top: -5px;
+  left: -1px;
 
-  transform: rotate(42deg);
+  width: 38px;
+  height: 11px;
 
-  border-radius:
-    75% 10% 70% 45%;
+  border-radius: 50%;
 
   background:
     linear-gradient(
-      #fffef0,
-      #fff2b9 55%,
-      #ffc66c
+      #fff0c9,
+      #cba77a
     );
-
-  filter: blur(.9px);
-
-  animation:
-    flameCore 1.2s ease-in-out infinite alternate-reverse;
 }
 
-@keyframes flameFlicker {
+.wax-drip {
+  position: absolute;
+
+  top: 3px;
+
+  width: 7px;
+  height: 22px;
+
+  border-radius: 0 0 8px 8px;
+
+  background: #e9cda4;
+}
+
+.wax-drip.one {
+  left: 5px;
+}
+
+.wax-drip.two {
+  right: 5px;
+  height: 34px;
+}
+
+.candle-wick {
+  position: absolute;
+
+  width: 2px;
+  height: 12px;
+
+  left: 47px;
+  bottom: 118px;
+
+  background: #34231b;
+}
+
+.flame {
+  position: absolute;
+
+  width: 19px;
+  height: 40px;
+
+  left: 39px;
+  bottom: 127px;
+
+  border-radius:
+    75% 10% 70% 40%;
+
+  transform-origin: 50% 90%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff6c4,
+      #ffd078 45%,
+      #f18a34 100%
+    );
+
+  box-shadow:
+    0 0 12px 4px rgba(255,195,97,.65),
+    0 0 30px 12px rgba(255,147,56,.22);
+
+  animation:
+    flameMove 1.7s ease-in-out infinite alternate;
+}
+
+.flame::after {
+  content: "";
+
+  position: absolute;
+
+  width: 7px;
+  height: 19px;
+
+  bottom: 3px;
+  left: 6px;
+
+  border-radius: 75% 10% 70% 40%;
+
+  background: #fff9de;
+
+  filter: blur(1px);
+}
+
+@keyframes flameMove {
   0% {
-    transform: rotate(39deg) scale(.95,1.04);
-    opacity: .94;
+    transform: rotate(37deg) scale(.94,1.06);
   }
 
-  22% {
-    transform: rotate(48deg) scale(1.03,.90);
-  }
-
-  48% {
-    transform: rotate(35deg) scale(.90,1.10);
-    opacity: 1;
-  }
-
-  74% {
-    transform: rotate(45deg) scale(1.06,.95);
+  50% {
+    transform: rotate(47deg) scale(1.05,.91);
   }
 
   100% {
-    transform: rotate(32deg) scale(.88,1.13);
-    opacity: .91;
+    transform: rotate(34deg) scale(.90,1.10);
   }
 }
 
-@keyframes flameCore {
-  from {
-    transform: rotate(38deg) scale(.92);
-    opacity: .85;
+.candle-holder {
+  position: absolute;
+
+  width: 67px;
+  height: 10px;
+
+  bottom: 19px;
+  left: 14px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      #d9b67d,
+      #755233
+    );
+
+  box-shadow:
+    0 4px 0 #5c402d,
+    0 8px 15px rgba(0,0,0,.45);
+}
+
+/* ============================================
+   ROSE PETALS
+============================================ */
+
+.petals {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 5;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+
+  top: -40px;
+
+  width: 15px;
+  height: 22px;
+
+  border-radius:
+    80% 12% 70% 18%;
+
+  background:
+    radial-gradient(
+      ellipse at 30% 25%,
+      #bf6871,
+      #853342 60%,
+      #4d1b29
+    );
+
+  box-shadow:
+    inset 2px 2px 4px rgba(255,200,200,.12),
+    2px 4px 8px rgba(0,0,0,.22);
+
+  animation:
+    falling linear infinite;
+}
+
+@keyframes falling {
+  0% {
+    transform:
+      translate3d(0,-30px,0)
+      rotate(0deg);
   }
 
-  to {
-    transform: rotate(47deg) scale(1.08);
-    opacity: 1;
+  50% {
+    transform:
+      translate3d(35px,50vh,0)
+      rotate(180deg);
+  }
+
+  100% {
+    transform:
+      translate3d(-25px,110vh,0)
+      rotate(360deg);
   }
 }
 
-/* =====================================================
-   SHARED DECORATIONS
-   ===================================================== */
+/* ============================================
+   SHARED TYPOGRAPHY
+============================================ */
 
-.small-caps {
-  font-family: "DM Sans", sans-serif;
+.small-text {
+  font-family:
+    "DM Sans",
+    sans-serif;
+
   font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 3.8px;
+
+  letter-spacing: 3px;
+
   text-transform: uppercase;
+
   color: var(--gold);
 }
 
 .ornament {
   display: flex;
+
   justify-content: center;
   align-items: center;
-  gap: 20px;
+
+  gap: 18px;
 
   margin: 35px auto;
 
   color: var(--gold);
-  font-size: 25px;
+
+  font-size: 23px;
 }
 
 .ornament::before,
 .ornament::after {
   content: "";
+
   display: block;
 
-  width: 90px;
+  width: 70px;
   height: 1px;
 
   background:
     linear-gradient(
       90deg,
       transparent,
-      rgba(197,161,122,.8)
+      rgba(198,164,124,.7)
     );
 }
 
@@ -721,341 +562,331 @@ input:focus-visible {
   transform: rotate(180deg);
 }
 
-.ornate-frame {
-  position: relative;
-}
-
-.ornate-frame::before,
-.ornate-frame::after {
-  content: "❧";
-  position: absolute;
-  color: rgba(197,161,122,.55);
-  font-size: 25px;
-}
-
-.ornate-frame::before {
-  top: 8px;
-  left: 13px;
-  transform: rotate(-35deg);
-}
-
-.ornate-frame::after {
-  right: 13px;
-  bottom: 8px;
-  transform: rotate(145deg);
-}
-
-/* =====================================================
+/* ============================================
    LOCK SCREEN
-   ===================================================== */
+============================================ */
 
 .lock-screen {
   position: relative;
-  z-index: 15;
 
+  z-index: 10;
+
+  width: 100%;
   min-height: 100svh;
-  display: grid;
-  place-items: center;
 
-  padding: 75px 20px;
+  display: flex;
 
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  padding: 55px 20px;
 }
 
 .lock-panel {
   position: relative;
 
-  width: min(100%,460px);
+  width: 100%;
+  max-width: 440px;
 
-  padding: 48px 32px 42px;
+  margin: 0 auto;
 
-  border: 1px solid rgba(197,161,122,.40);
+  padding: 55px 28px;
+
+  text-align: center;
+
+  border:
+    1px solid rgba(198,164,124,.35);
 
   background:
-    radial-gradient(
-      ellipse at 85% 0%,
-      rgba(158,89,46,.12),
-      transparent 60%
-    ),
     linear-gradient(
       145deg,
-      rgba(54,34,29,.93),
-      rgba(20,13,13,.93)
+      rgba(55,33,29,.90),
+      rgba(23,14,14,.93)
     );
 
   box-shadow:
-    0 30px 100px rgba(0,0,0,.65),
-    inset 0 0 0 7px rgba(197,161,122,.035),
-    inset 0 0 60px rgba(255,190,112,.025);
+    0 25px 70px rgba(0,0,0,.35),
+    inset 0 0 40px rgba(255,187,100,.025);
 
   backdrop-filter: blur(8px);
-
-  animation:
-    lockArrive 1.3s var(--ease) both;
 }
 
 .lock-panel::before {
   content: "";
-  position: absolute;
-  inset: 11px;
 
-  border: 1px solid rgba(197,161,122,.16);
+  position: absolute;
+
+  inset: 10px;
+
+  border:
+    1px solid rgba(198,164,124,.12);
+
   pointer-events: none;
 }
 
-@keyframes lockArrive {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
+/* LOCK ICON */
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Antique lock */
-
-.lock-art {
+.lock-icon {
   position: relative;
-  width: 110px;
-  height: 140px;
 
-  margin: 45px auto 22px;
+  width: 95px;
+  height: 125px;
 
-  filter: drop-shadow(0 10px 18px rgba(0,0,0,.45));
+  margin: 42px auto 30px;
 }
 
 .lock-shackle {
   position: absolute;
+
+  width: 57px;
+  height: 73px;
+
   top: 0;
-  left: 22px;
+  left: 19px;
 
-  width: 66px;
-  height: 85px;
+  border: 9px solid #c8a57a;
+  border-bottom: none;
 
-  border: 10px solid #c7a078;
-  border-bottom: 0;
-
-  border-radius: 38px 38px 0 0;
-
-  box-shadow:
-    inset 3px 0 4px rgba(255,255,255,.16);
+  border-radius:
+    35px 35px 0 0;
 
   transform-origin: right bottom;
 
   transition:
-    transform .9s var(--ease);
+    transform .8s ease;
 }
 
-.lock-base {
+.lock-body {
   position: absolute;
-  left: 0;
+
+  width: 95px;
+  height: 72px;
+
   bottom: 0;
 
-  width: 110px;
-  height: 85px;
+  border-radius: 7px;
 
-  border-radius: 8px;
-
-  border: 2px solid #e2c08e;
+  border: 2px solid #e1c08e;
 
   background:
     linear-gradient(
-      125deg,
-      #f0d19e,
-      #bc905d 45%,
-      #815831 85%
+      130deg,
+      #e9ca99,
+      #b88c5c 55%,
+      #805733
     );
 
   box-shadow:
-    inset 3px 3px 10px rgba(255,255,255,.25),
-    inset -5px -5px 12px rgba(75,42,22,.25),
+    inset 3px 3px 8px rgba(255,255,255,.2),
     0 10px 25px rgba(0,0,0,.4);
 
   display: grid;
   place-items: center;
 }
 
-.lock-keyhole {
-  width: 15px;
-  height: 15px;
+.keyhole {
+  position: relative;
+
+  width: 12px;
+  height: 12px;
 
   border-radius: 50%;
-  background: #432a20;
 
-  position: relative;
+  background: #432b21;
 }
 
-.lock-keyhole::after {
+.keyhole::after {
   content: "";
+
   position: absolute;
-  top: 10px;
-  left: 4px;
 
-  width: 7px;
-  height: 23px;
+  top: 8px;
+  left: 3px;
 
-  background: #432a20;
+  width: 6px;
+  height: 19px;
+
+  background: #432b21;
 
   clip-path:
     polygon(
-      25% 0,
-      75% 0,
+      30% 0,
+      70% 0,
       100% 100%,
       0 100%
     );
 }
 
-.lock-art.unlocked .lock-shackle {
+.lock-icon.unlocked .lock-shackle {
   transform:
-    translateY(-21px)
-    rotate(-22deg);
+    translateY(-18px)
+    rotate(-20deg);
 }
 
-.lock-heading {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(49px,9vw,75px);
+.lock-title {
+  margin: 0;
+
+  font-family:
+    "Great Vibes",
+    cursive;
+
+  font-size:
+    clamp(47px,10vw,70px);
+
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.3;
 
-  margin: 18px 0 20px;
-
-  color: #f1dfc6;
+  color: var(--cream);
 }
 
 .lock-description {
-  max-width: 330px;
-  margin: 0 auto 30px;
+  margin: 25px auto 35px;
 
-  font-size: 21px;
-  line-height: 1.6;
+  max-width: 330px;
+
+  font-size: 20px;
   font-style: italic;
 
-  color: #d2b7a0;
+  line-height: 1.7;
+
+  color: #d0b7a2;
 }
 
 .passcode-label {
   display: block;
-  margin-bottom: 17px;
+
+  margin-bottom: 16px;
 }
 
 .passcode-input {
   display: block;
 
-  width: 220px;
+  width: 205px;
   max-width: 100%;
 
-  margin: auto;
-  padding: 15px 18px;
+  margin: 0 auto;
 
-  border: 1px solid rgba(197,161,122,.60);
+  padding: 14px;
+
+  border:
+    1px solid rgba(198,164,124,.6);
+
   border-radius: 2px;
 
-  background: rgba(255,255,255,.035);
+  background:
+    rgba(255,255,255,.035);
 
-  color: #f8e6cc;
+  color: var(--cream);
 
   text-align: center;
-  font-size: 32px;
-  letter-spacing: 14px;
+
+  font-size: 29px;
+
+  letter-spacing: 12px;
 
   outline: none;
-
-  transition:
-    border-color .3s,
-    box-shadow .3s;
 }
 
 .passcode-input:focus {
-  border-color: #e4c496;
-  box-shadow: 0 0 25px rgba(228,174,94,.10);
+  border-color: var(--gold-light);
+
+  box-shadow:
+    0 0 20px rgba(255,184,95,.1);
 }
 
 .unlock-button {
   display: block;
 
-  width: 220px;
+  width: 205px;
   max-width: 100%;
 
   margin: 20px auto 0;
-  padding: 16px 15px;
 
-  border: 1px solid #a46a65;
+  padding: 15px;
+
+  border: 1px solid #a66b6e;
 
   background:
     linear-gradient(
       135deg,
-      #8d3d49,
-      #5c2530
+      #8c3c49,
+      #622b37
     );
 
-  color: #f5e2c9;
+  color: var(--cream);
 
-  font-family: "DM Sans",sans-serif;
+  font-family:
+    "DM Sans",
+    sans-serif;
+
   font-size: 10px;
-  letter-spacing: 2.4px;
+  letter-spacing: 2px;
+
   text-transform: uppercase;
 
-  cursor: pointer;
-
   transition:
-    transform .3s,
     background .3s,
-    box-shadow .3s;
+    transform .3s;
 }
 
 .unlock-button:hover {
+  background: #914452;
   transform: translateY(-2px);
-  box-shadow: 0 7px 20px rgba(0,0,0,.25);
 }
 
 .unlock-button:disabled {
-  cursor: default;
   opacity: .6;
 }
 
-.lock-error {
+.error-message {
   min-height: 24px;
+
   margin-top: 18px;
 
-  font-size: 18px;
+  font-size: 17px;
   font-style: italic;
 
-  color: #e5a7a7;
+  color: #e1a0a4;
 }
 
 .shake {
-  animation: lockShake .4s ease;
+  animation: shake .4s ease;
 }
 
-@keyframes lockShake {
-  0%,100% { transform: translateX(0); }
-  20%,60% { transform: translateX(-8px); }
-  40%,80% { transform: translateX(8px); }
+@keyframes shake {
+  20%,60% {
+    transform: translateX(-7px);
+  }
+
+  40%,80% {
+    transform: translateX(7px);
+  }
 }
 
-/* =====================================================
-   ARCHIVE PAGE
-   ===================================================== */
+/* ============================================
+   MAIN WEBSITE
+============================================ */
 
 .website {
   position: relative;
-  z-index: 4;
 
-  width: min(100%,1180px);
+  z-index: 3;
+
+  width: 100%;
+  max-width: 1100px;
+
   margin: 0 auto;
 
-  padding: 0 24px 70px;
+  padding: 0 20px 70px;
 
-  animation: websiteEnter 1.5s var(--ease) both;
+  animation:
+    websiteAppear 1.2s ease both;
 }
 
-@keyframes websiteEnter {
+@keyframes websiteAppear {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(25px);
   }
 
   to {
@@ -1064,533 +895,369 @@ input:focus-visible {
   }
 }
 
-/* =====================================================
+/* ============================================
    HEADER
-   ===================================================== */
+============================================ */
 
-.archive-header {
-  position: relative;
+header {
+  width: 100%;
+
+  padding: 105px 15px 35px;
+
   text-align: center;
-
-  padding: 105px 15px 30px;
 }
 
-.archive-header::before {
-  content: "✦";
-  display: block;
+header h1 {
+  margin: 25px 0 10px;
 
-  font-size: 15px;
-  color: var(--gold);
+  font-family:
+    "Great Vibes",
+    cursive;
 
-  margin-bottom: 23px;
-}
+  font-size:
+    clamp(57px,11vw,105px);
 
-.archive-header h1 {
-  margin: 28px 0 12px;
-
-  font-family: "Great Vibes",cursive;
-  font-size: clamp(62px,11vw,112px);
   font-weight: 400;
   line-height: 1.25;
 
-  color: #f3e0c6;
+  color: #f3e1c9;
 
   text-shadow:
-    0 4px 25px rgba(0,0,0,.55),
-    0 0 60px rgba(230,148,69,.12);
+    0 3px 25px rgba(0,0,0,.45);
 }
 
-.archive-subtitle {
+.subtitle {
   margin: 0;
-  font-size: 23px;
+
+  font-size: 22px;
   font-style: italic;
-  color: #d3b7a0;
+
+  color: #cdb19b;
 }
 
-.header-flourish {
-  margin: 38px auto 0;
-
-  font-size: 23px;
-  letter-spacing: 10px;
-  color: rgba(197,161,122,.8);
-}
-
-/* =====================================================
+/* ============================================
    MUSIC PLAYER
-   ===================================================== */
+============================================ */
 
 .music-section {
-  position: relative;
+  width: 100%;
+  max-width: 490px;
 
-  width: min(100%,520px);
-  margin: 12px auto 80px;
+  margin: 15px auto 70px;
 
   text-align: center;
 }
 
-.music-label {
-  margin-bottom: 17px;
-}
-
 .music-card {
-  position: relative;
+  width: 100%;
 
-  padding: 15px;
+  margin-top: 20px;
+  padding: 13px;
 
-  border: 1px solid rgba(197,161,122,.35);
+  border:
+    1px solid rgba(198,164,124,.35);
 
   background:
-    linear-gradient(
-      135deg,
-      rgba(77,46,39,.80),
-      rgba(20,13,14,.92)
-    );
+    rgba(30,19,19,.8);
 
   box-shadow:
-    0 20px 55px rgba(0,0,0,.38),
-    inset 0 0 30px rgba(255,179,85,.035);
-}
-
-.music-card::before {
-  content: "";
-  position: absolute;
-  inset: 6px;
-
-  border: 1px solid rgba(197,161,122,.13);
-  pointer-events: none;
+    0 15px 40px rgba(0,0,0,.25);
 }
 
 .music-card iframe {
-  position: relative;
-  z-index: 1;
-
   display: block;
 
   width: 100%;
   height: 152px;
 
-  border: 0;
+  border: none;
   border-radius: 6px;
 }
 
-.music-caption {
-  margin-top: 17px;
-
-  font-size: 18px;
-  font-style: italic;
-  color: var(--muted);
-}
-
-/* =====================================================
+/* ============================================
    INTRODUCTION
-   ===================================================== */
+============================================ */
 
 .introduction {
-  position: relative;
+  width: 100%;
+  max-width: 550px;
 
-  width: min(100%,620px);
-  margin: 0 auto 90px;
+  margin: 0 auto 75px;
 
-  padding: 0 20px;
+  padding: 0 15px;
 
   text-align: center;
 
-  font-size: 23px;
-  line-height: 1.85;
+  font-size: 22px;
   font-style: italic;
 
-  color: #d5bda7;
+  line-height: 1.8;
+
+  color: #d2b9a5;
 }
 
-.introduction .emphasis {
+.introduction strong {
   display: block;
 
-  margin-top: 24px;
+  margin-top: 25px;
 
-  color: #efcfaa;
-  font-size: 25px;
+  font-weight: 400;
+
+  color: #e7c7a7;
 }
 
-/* =====================================================
-   THE LETTER ARCHIVE
-   ===================================================== */
+/* ============================================
+   ARCHIVE
+============================================ */
 
 .archive-section {
-  position: relative;
-  width: min(100%,950px);
+  width: 100%;
+  max-width: 800px;
+
   margin: 0 auto;
 }
 
-.section-heading {
+.archive-heading {
   text-align: center;
-  margin-bottom: 42px;
+
+  margin-bottom: 35px;
 }
 
-.section-heading h2 {
-  margin: 17px 0 10px;
+.archive-heading h2 {
+  margin: 15px 0;
 
-  font-size: clamp(36px,6vw,51px);
+  font-size:
+    clamp(32px,6vw,45px);
+
   font-weight: 400;
   font-style: italic;
-
-  color: #ecd6b9;
 }
 
-.section-heading p {
-  margin: 0;
-
-  font-size: 19px;
-  font-style: italic;
-
-  color: #bda28c;
-}
-
-/* Decorative archive border */
-
-.archive-display {
+.archive-frame {
   position: relative;
 
-  padding: 38px 25px 45px;
+  width: 100%;
 
-  border: 1px solid rgba(197,161,122,.30);
+  padding: 45px 15px 50px;
+
+  border:
+    1px solid rgba(198,164,124,.3);
 
   background:
-    radial-gradient(
-      ellipse at 50% 43%,
-      rgba(164,99,53,.10),
-      transparent 65%
-    ),
-
     linear-gradient(
-      150deg,
-      rgba(64,39,31,.36),
-      rgba(19,13,13,.40)
+      145deg,
+      rgba(72,42,34,.25),
+      rgba(21,13,13,.4)
     );
 
   box-shadow:
-    inset 0 0 0 8px rgba(197,161,122,.018),
-    0 30px 80px rgba(0,0,0,.20);
+    inset 0 0 35px rgba(255,174,90,.025),
+    0 20px 60px rgba(0,0,0,.15);
 }
 
-.archive-display::before {
+.archive-frame::before {
   content: "";
-  position: absolute;
-  inset: 12px;
 
-  border: 1px solid rgba(197,161,122,.11);
+  position: absolute;
+
+  inset: 10px;
+
+  border:
+    1px solid rgba(198,164,124,.10);
+
   pointer-events: none;
 }
 
-/* Ornate corners */
-
-.corner {
-  position: absolute;
-
-  width: 35px;
-  height: 35px;
-
-  pointer-events: none;
-  z-index: 2;
-}
-
-.corner.top-left {
-  top: 9px;
-  left: 9px;
-
-  border-top: 1px solid var(--gold);
-  border-left: 1px solid var(--gold);
-}
-
-.corner.top-right {
-  top: 9px;
-  right: 9px;
-
-  border-top: 1px solid var(--gold);
-  border-right: 1px solid var(--gold);
-}
-
-.corner.bottom-left {
-  bottom: 9px;
-  left: 9px;
-
-  border-bottom: 1px solid var(--gold);
-  border-left: 1px solid var(--gold);
-}
-
-.corner.bottom-right {
-  bottom: 9px;
-  right: 9px;
-
-  border-bottom: 1px solid var(--gold);
-  border-right: 1px solid var(--gold);
-}
-
-/* =====================================================
-   STACKED ENVELOPE CAROUSEL
-   ===================================================== */
+/* ============================================
+   STACKED ENVELOPES
+============================================ */
 
 .carousel {
-  position: relative;
-
   display: grid;
-  grid-template-columns: 65px minmax(0,1fr) 65px;
+
+  grid-template-columns:
+    45px minmax(0,1fr) 45px;
 
   align-items: center;
 
-  width: min(100%,760px);
+  gap: 5px;
+
+  width: 100%;
+  max-width: 620px;
+
   margin: 0 auto;
 }
 
-.carousel-arrow {
+.arrow {
   position: relative;
-  z-index: 10;
 
-  display: grid;
-  place-items: center;
+  z-index: 7;
 
-  width: 60px;
-  height: 85px;
+  width: 45px;
+  height: 70px;
 
-  border: 0;
+  border: none;
+
   background: transparent;
 
-  color: #e6c8a3;
+  color: #e4c5a0;
 
-  font-family: "Cormorant Garamond",serif;
-  font-size: 72px;
-  font-weight: 300;
-  line-height: 1;
+  font-size: 58px;
 
-  opacity: .52;
-  cursor: pointer;
+  opacity: .55;
 
   transition:
     opacity .3s,
-    transform .35s,
-    text-shadow .35s;
+    transform .3s;
 }
 
-.carousel-arrow:hover {
+.arrow:hover {
   opacity: 1;
-
-  text-shadow:
-    0 0 20px rgba(255,197,123,.40);
 }
 
-.carousel-arrow.prev:hover {
-  transform: translateX(-5px);
+.arrow.previous:hover {
+  transform: translateX(-4px);
 }
 
-.carousel-arrow.next:hover {
-  transform: translateX(5px);
+.arrow.next:hover {
+  transform: translateX(4px);
 }
-
-/* Envelope stage */
 
 .envelope-stage {
   position: relative;
 
-  height: 380px;
+  width: 100%;
   min-width: 0;
 
-  display: grid;
-  place-items: center;
+  height: 310px;
 
-  perspective: 1300px;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  perspective: 1000px;
 }
 
-/* Soft pool of light below envelopes */
-
-.envelope-stage::before {
-  content: "";
-  position: absolute;
-
-  width: 85%;
-  height: 100px;
-
-  bottom: 40px;
-  left: 7.5%;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      ellipse,
-      rgba(225,145,74,.18),
-      transparent 70%
-    );
-
-  filter: blur(22px);
-}
-
-/* The entire stack */
-
-.envelope-stack {
+.envelope {
   position: relative;
 
-  width: min(100%,410px);
+  display: block;
+
+  width: min(100%,365px);
+
   aspect-ratio: 1.55;
 
-  display: block;
   padding: 0;
 
-  border: 0;
+  border: none;
+
   background: transparent;
 
-  cursor: pointer;
-
   filter:
-    drop-shadow(0 28px 22px rgba(0,0,0,.52));
+    drop-shadow(
+      0 22px 18px rgba(0,0,0,.5)
+    );
 
   transition:
-    transform .55s var(--ease),
-    filter .55s;
+    transform .4s ease;
 }
 
-.envelope-stack:hover {
-  transform: translateY(-9px);
-
-  filter:
-    drop-shadow(0 36px 26px rgba(0,0,0,.60));
+.envelope:hover {
+  transform: translateY(-5px);
 }
 
-/* Envelopes behind the selected one */
+/* BACK ENVELOPES */
 
-.back-envelope {
+.stack-layer {
   position: absolute;
+
   inset: 5px;
 
-  border: 1px solid rgba(245,219,180,.22);
+  border:
+    1px solid rgba(255,225,190,.18);
 
   box-shadow:
-    0 8px 22px rgba(0,0,0,.35);
-
-  transition:
-    transform .7s var(--ease),
-    opacity .7s;
+    0 6px 15px rgba(0,0,0,.3);
 }
 
-.back-envelope.first {
-  background:
-    linear-gradient(
-      140deg,
-      #b99c7e,
-      #80634e
-    );
+.stack-layer.one {
+  background: #b69a7d;
 
   transform:
-    rotate(-10deg)
-    translate(-11px,11px);
+    rotate(-7deg)
+    translate(-5px,6px);
 }
 
-.back-envelope.second {
-  background:
-    linear-gradient(
-      135deg,
-      #cbb092,
-      #92715b
-    );
+.stack-layer.two {
+  background: #9d7e65;
 
   transform:
-    rotate(8deg)
-    translate(12px,5px);
+    rotate(6deg)
+    translate(6px,4px);
 }
 
-.back-envelope.third {
-  background:
-    linear-gradient(
-      135deg,
-      #a7886e,
-      #6f5344
-    );
-
-  transform:
-    rotate(-4deg)
-    translate(-3px,-8px);
-}
-
-/* Main envelope */
+/* MAIN ENVELOPE */
 
 .envelope-back {
   position: absolute;
+
   inset: 0;
 
   background:
     linear-gradient(
-      140deg,
-      #e1c9a9 0%,
-      #c3a486 50%,
-      #99765e 100%
+      135deg,
+      #dbc3a3,
+      #aa886d
     );
-
-  border: 1px solid rgba(255,235,202,.50);
-
-  box-shadow:
-    inset 0 0 30px rgba(94,58,36,.20),
-    0 5px 20px rgba(0,0,0,.25);
 }
-
-/* Letter that slides out */
 
 .letter-preview {
   position: absolute;
+
   z-index: 2;
 
   width: 83%;
-  height: 85%;
+  height: 84%;
 
   left: 8.5%;
   bottom: 7%;
 
-  padding: 24px 15px;
+  padding-top: 22px;
 
-  border: 1px solid #bca07d;
+  border:
+    1px solid #bba07d;
 
   background:
     linear-gradient(
       135deg,
-      #f4e8d1,
-      #dfc7a5
+      #f2e5cc,
+      #dbc3a2
     );
 
-  box-shadow:
-    0 3px 10px rgba(0,0,0,.15);
+  color: #85664f;
+
+  font-size: 18px;
+  font-style: italic;
 
   text-align: center;
 
-  color: #81634f;
-
   transition:
-    transform .95s var(--ease);
+    transform .85s var(--ease);
 }
-
-.preview-decoration {
-  display: block;
-  margin-bottom: 10px;
-
-  font-size: 19px;
-  color: #a78965;
-}
-
-.preview-text {
-  display: block;
-
-  font-size: 20px;
-  font-style: italic;
-}
-
-/* Envelope folds */
 
 .envelope-front {
   position: absolute;
+
   inset: 0;
+
   z-index: 3;
 
   background:
     linear-gradient(
-      140deg,
-      #dfc3a2,
-      #ae8b70
+      135deg,
+      #d7ba9b,
+      #b08d70
     );
 
   clip-path:
@@ -1605,20 +1272,22 @@ input:focus-visible {
 
 .envelope-bottom {
   position: absolute;
+
   inset: 0;
+
   z-index: 4;
 
   background:
     linear-gradient(
       160deg,
-      #e0c3a0,
-      #b28b6c
+      #d8b998,
+      #ad896b
     );
 
   clip-path:
     polygon(
       0 100%,
-      50% 43%,
+      50% 44%,
       100% 100%
     );
 }
@@ -1636,9 +1305,8 @@ input:focus-visible {
 
   background:
     linear-gradient(
-      180deg,
-      #ead3b1,
-      #b89778
+      #e4ccab,
+      #b59678
     );
 
   clip-path:
@@ -1648,645 +1316,454 @@ input:focus-visible {
       50% 100%
     );
 
-  transform-origin: top center;
+  transform-origin: top;
 
   backface-visibility: hidden;
 
   transition:
-    transform .85s var(--ease);
+    transform .8s ease;
 }
-
-/* Wax seal */
 
 .wax-seal {
   position: absolute;
-  z-index: 7;
+
+  z-index: 6;
 
   top: 47%;
   left: 50%;
 
-  transform: translate(-50%,-50%);
+  transform:
+    translate(-50%,-50%);
 
-  width: 61px;
-  height: 61px;
+  width: 53px;
+  height: 53px;
 
   border-radius: 50%;
 
-  border: 3px double #d8a299;
+  border:
+    3px double #d4a093;
 
   background:
     radial-gradient(
-      circle at 30% 22%,
-      #c3767a,
-      #853945 45%,
-      #581d2b 85%
+      circle at 30% 25%,
+      #b96972,
+      #7a303d 65%,
+      #4f1d29
     );
 
   box-shadow:
-    inset 3px 3px 7px rgba(255,211,211,.17),
-    inset -4px -4px 7px rgba(38,7,15,.32),
-    0 5px 12px rgba(0,0,0,.40);
+    inset 2px 2px 5px rgba(255,210,210,.15),
+    0 5px 10px rgba(0,0,0,.35);
 
   display: grid;
   place-items: center;
 
-  font-family: "Great Vibes",cursive;
-  font-size: 36px;
-  color: #f0d0c4;
+  font-family:
+    "Great Vibes",
+    cursive;
+
+  font-size: 31px;
+
+  color: #f1d3c7;
 
   transition:
-    opacity .25s,
-    transform .45s;
+    opacity .3s;
 }
 
-.wax-seal::before {
-  content: "";
-  position: absolute;
-  inset: 5px;
+/* OPEN ANIMATION */
 
-  border-radius: 50%;
-  border: 1px solid rgba(235,183,170,.35);
-}
-
-/* Opening sequence */
-
-.envelope-stack.open .wax-seal {
+.envelope.open .wax-seal {
   opacity: 0;
-  transform:
-    translate(-50%,-50%)
-    scale(1.25)
-    rotate(20deg);
 }
 
-.envelope-stack.open .envelope-flap {
+.envelope.open .envelope-flap {
   transform: rotateX(180deg);
   z-index: 1;
 }
 
-.envelope-stack.open .letter-preview {
-  transform: translateY(-76%);
-  transition-delay: .28s;
+.envelope.open .letter-preview {
+  transform: translateY(-70%);
+  transition-delay: .25s;
 }
 
-/* Carousel movement */
+/* CAROUSEL ANIMATION */
 
-.envelope-stack.slide-next {
+.envelope.slide-next {
   animation:
-    slideNext .75s var(--ease);
+    slideNext .7s var(--ease);
 }
 
-.envelope-stack.slide-prev {
+.envelope.slide-previous {
   animation:
-    slidePrev .75s var(--ease);
+    slidePrevious .7s var(--ease);
 }
 
 @keyframes slideNext {
   0% {
     opacity: 1;
-    transform: translateX(0) rotate(0);
+    transform: translateX(0);
   }
 
-  38% {
-    opacity: .35;
-    transform:
-      translateX(-80px)
-      rotate(-12deg)
-      scale(.93);
-  }
-
-  39% {
+  45% {
     opacity: 0;
-    transform:
-      translateX(95px)
-      rotate(10deg)
-      scale(.93);
+    transform: translateX(-55px);
+  }
+
+  46% {
+    opacity: 0;
+    transform: translateX(55px);
   }
 
   100% {
     opacity: 1;
-    transform: translateX(0) rotate(0);
+    transform: translateX(0);
   }
 }
 
-@keyframes slidePrev {
+@keyframes slidePrevious {
   0% {
     opacity: 1;
-    transform: translateX(0) rotate(0);
+    transform: translateX(0);
   }
 
-  38% {
-    opacity: .35;
-    transform:
-      translateX(80px)
-      rotate(12deg)
-      scale(.93);
-  }
-
-  39% {
+  45% {
     opacity: 0;
-    transform:
-      translateX(-95px)
-      rotate(-10deg)
-      scale(.93);
+    transform: translateX(55px);
+  }
+
+  46% {
+    opacity: 0;
+    transform: translateX(-55px);
   }
 
   100% {
     opacity: 1;
-    transform: translateX(0) rotate(0);
+    transform: translateX(0);
   }
 }
 
-/* =====================================================
-   LETTER DETAILS
-   ===================================================== */
+/* ============================================
+   LETTER INFORMATION
+============================================ */
 
-.letter-details {
-  position: relative;
-
-  min-height: 160px;
-
-  padding: 0 20px 15px;
-
+.letter-information {
   text-align: center;
+
+  margin-top: 5px;
 }
 
-.letter-counter {
-  display: block;
-  margin-bottom: 15px;
-}
+.letter-information h3 {
+  margin: 15px 0 20px;
 
-.letter-title {
-  margin: 0 0 18px;
+  font-size:
+    clamp(27px,5vw,36px);
 
-  font-size: clamp(29px,5vw,39px);
   font-weight: 500;
   font-style: italic;
 
-  color: #f1dbc0;
-
-  transition: opacity .25s;
+  color: #f0d9bd;
 }
 
-.letter-details.changing .letter-title {
-  opacity: .25;
-}
+.open-button {
+  padding: 13px 25px;
 
-.break-seal {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 47px;
-
-  padding: 13px 27px;
-
-  border: 1px solid rgba(197,161,122,.55);
+  border:
+    1px solid rgba(198,164,124,.55);
 
   background:
-    linear-gradient(
-      145deg,
-      rgba(111,58,51,.25),
-      rgba(24,15,14,.25)
-    );
+    rgba(255,255,255,.025);
 
-  color: #efd7b7;
+  color: #ebd1b2;
 
-  font-family: "DM Sans",sans-serif;
+  font-family:
+    "DM Sans",
+    sans-serif;
+
   font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
+  letter-spacing: 2px;
 
-  cursor: pointer;
+  text-transform: uppercase;
 
   transition:
     background .3s,
-    border-color .3s,
     transform .3s;
 }
 
-.break-seal:hover {
-  background: rgba(141,78,60,.30);
-  border-color: #e0bc8e;
+.open-button:hover {
+  background:
+    rgba(198,164,124,.12);
+
   transform: translateY(-2px);
 }
 
-.carousel-instruction {
-  margin: 23px 0 0;
-
-  font-size: 17px;
-  font-style: italic;
-
-  color: #a78d79;
-}
-
-/* =====================================================
-   POEM READING OVERLAY
-   ===================================================== */
+/* ============================================
+   POEM READING VIEW
+============================================ */
 
 .poem-overlay {
   position: fixed;
+
   inset: 0;
 
   z-index: 100;
 
   display: none;
+
   align-items: flex-start;
   justify-content: center;
 
-  padding: 30px 16px;
+  padding: 20px;
 
   overflow-y: auto;
-  overscroll-behavior: contain;
 
   background:
-    radial-gradient(
-      ellipse at 50% 20%,
-      rgba(76,42,29,.35),
-      transparent 65%
-    ),
-    rgba(13,9,9,.94);
+    rgba(15,10,10,.94);
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .poem-overlay.visible {
   display: flex;
-  animation: overlayAppear .5s ease both;
 }
-
-@keyframes overlayAppear {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* The parchment */
 
 .poem-paper {
   position: relative;
 
-  width: min(100%,730px);
+  width: 100%;
+  max-width: 700px;
+
   margin: auto;
 
-  padding: 75px 65px 80px;
+  padding: 65px 50px;
 
   color: var(--ink);
 
-  border: 1px solid #c2a17a;
+  border:
+    1px solid #c4a37c;
 
   background:
     radial-gradient(
-      ellipse at 15% 10%,
-      rgba(255,255,255,.48),
-      transparent 50%
-    ),
-
-    radial-gradient(
-      ellipse at 90% 90%,
-      rgba(127,79,34,.14),
+      ellipse at 20% 10%,
+      rgba(255,255,255,.4),
       transparent 55%
     ),
 
     linear-gradient(
       135deg,
-      #f4e6ce 0%,
-      #e7d2b1 48%,
-      #d9bd96 100%
+      #f2e4ca,
+      #dcc3a1
     );
 
   box-shadow:
-    0 30px 100px rgba(0,0,0,.70),
-    inset 0 0 75px rgba(110,74,37,.13);
+    0 30px 90px rgba(0,0,0,.6),
+    inset 0 0 60px rgba(110,70,35,.12);
 
   animation:
-    paperUnfold .8s var(--ease) both;
+    paperAppear .7s var(--ease);
 }
 
-@keyframes paperUnfold {
+.poem-paper::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 13px;
+
+  border:
+    1px solid rgba(120,83,52,.25);
+
+  pointer-events: none;
+}
+
+@keyframes paperAppear {
   from {
     opacity: 0;
+
     transform:
-      translateY(50px)
-      scale(.94);
+      translateY(35px)
+      scale(.96);
   }
 
   to {
     opacity: 1;
+
     transform:
       translateY(0)
       scale(1);
   }
 }
 
-.poem-paper::before {
-  content: "";
-  position: absolute;
-  inset: 16px;
-
-  border: 1px solid rgba(115,79,48,.27);
-
-  pointer-events: none;
-}
-
-.poem-paper::after {
-  content: "";
-  position: absolute;
-  inset: 23px;
-
-  border: 1px solid rgba(115,79,48,.09);
-
-  pointer-events: none;
-}
-
-/* Paper ornaments */
-
-.paper-ornament {
-  position: relative;
-
-  text-align: center;
-  margin-bottom: 20px;
-
-  font-size: 26px;
-  color: #9b7956;
-}
-
 .close-poem {
   position: relative;
-  z-index: 5;
+
+  z-index: 2;
 
   float: right;
 
-  width: 45px;
-  height: 45px;
+  width: 43px;
+  height: 43px;
 
-  display: grid;
-  place-items: center;
+  border:
+    1px solid rgba(100,70,50,.25);
 
-  border: 1px solid rgba(107,75,52,.30);
   border-radius: 50%;
 
-  background: rgba(241,224,194,.90);
+  background:
+    #edddc2;
 
-  color: #624637;
-  font-size: 30px;
+  color: #66483a;
 
-  cursor: pointer;
-}
-
-.close-poem:hover {
-  background: #fff0d6;
+  font-size: 28px;
 }
 
 .poem-heading {
   clear: both;
 
-  padding-top: 18px;
-  margin-bottom: 53px;
-
   text-align: center;
+
+  margin-bottom: 45px;
+
+  padding-top: 20px;
 }
 
 .poem-heading h2 {
-  margin: 24px 0 14px;
+  margin: 20px 0 10px;
 
-  font-family: "Great Vibes",cursive;
-  font-size: clamp(43px,8vw,68px);
+  font-family:
+    "Great Vibes",
+    cursive;
+
+  font-size:
+    clamp(40px,8vw,60px);
+
   font-weight: 400;
-  line-height: 1.25;
 
-  color: #5c4033;
+  line-height: 1.3;
+
+  color: #5b4033;
 }
 
 .poem-heading p {
   font-size: 16px;
   font-style: italic;
-  color: #94755c;
-}
 
-.poem-divider {
-  width: 95px;
-  height: 1px;
-
-  margin: 25px auto 0;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      #977653,
-      transparent
-    );
+  color: #92745d;
 }
 
 .poem-text {
-  position: relative;
-  z-index: 1;
+  font-size: 21px;
+
+  line-height: 1.9;
 
   white-space: pre-line;
+
   overflow-wrap: anywhere;
-
-  font-size: 21px;
-  line-height: 1.95;
-
-  color: #49362c;
 }
 
-/* Make the last line of the dad poem
-   visually linger without adding words */
-
-.poem-last-line {
+.final-line {
   display: block;
-  margin-top: 32px;
 
-  font-size: 26px;
+  margin-top: 28px;
+
+  font-size: 25px;
   font-style: italic;
-  color: #6b3c3b;
+
+  color: #683c3b;
 }
 
-/* Signature */
-
-.poem-signature {
-  position: relative;
-  z-index: 1;
-
-  margin-top: 75px;
+.signature {
+  margin-top: 65px;
 
   text-align: right;
 
-  font-family: "Great Vibes",cursive;
-  font-size: 42px;
+  font-family:
+    "Great Vibes",
+    cursive;
 
-  color: #854b51;
+  font-size: 39px;
+
+  color: #80434b;
 }
 
-/* =====================================================
+/* ============================================
    FOOTER
-   ===================================================== */
+============================================ */
 
-.site-footer {
-  margin-top: 105px;
-  padding: 50px 20px 60px;
+footer {
+  margin-top: 90px;
 
-  border-top: 1px solid rgba(197,161,122,.25);
+  padding: 45px 20px;
+
+  border-top:
+    1px solid rgba(198,164,124,.25);
 
   text-align: center;
-}
 
-.site-footer .footer-quote {
-  margin: 0 0 25px;
-
-  font-size: 23px;
+  font-size: 21px;
   font-style: italic;
-  color: #d1b59c;
+
+  color: #c9ae97;
 }
 
-.site-footer .small-caps {
-  letter-spacing: 3px;
+footer small {
+  display: block;
+
+  margin-top: 25px;
 }
 
-/* =====================================================
+/* ============================================
    MOBILE
-   ===================================================== */
+============================================ */
 
-@media (max-width: 700px) {
+@media(max-width:600px) {
 
   .website {
-    padding: 0 14px 45px;
+    padding:
+      0 16px 50px;
   }
 
-  .archive-header {
-    padding-top: 105px;
+  header {
+    padding:
+      110px 5px 25px;
   }
 
-  .archive-header h1 {
-    font-size: clamp(57px,12vw,78px);
+  header h1 {
+    font-size:
+      clamp(54px,12vw,75px);
   }
 
-  .archive-subtitle {
-    font-size: 20px;
+  .subtitle {
+    font-size: 19px;
   }
 
-  .candle-scene.right {
-    top: 12px;
-    right: -13px;
+  .candle {
+    top: 20px;
+    right: 0;
 
-    transform: scale(.57);
+    transform: scale(.65);
     transform-origin: top right;
-
-    opacity: .82;
-  }
-
-  .candle-scene.left {
-    top: 650px;
-    left: -35px;
-
-    transform: scale(.43);
-    transform-origin: top left;
-
-    opacity: .52;
-  }
-
-  .music-section {
-    margin-bottom: 65px;
   }
 
   .introduction {
-    margin-bottom: 65px;
-
-    padding: 0 15px;
-
-    font-size: 20px;
-  }
-
-  .introduction .emphasis {
-    font-size: 22px;
-  }
-
-  .section-heading h2 {
-    font-size: 36px;
-  }
-
-  .archive-display {
-    padding: 30px 8px 38px;
-  }
-
-  .carousel {
-    grid-template-columns:
-      35px minmax(0,1fr) 35px;
-  }
-
-  .carousel-arrow {
-    width: 35px;
-    height: 65px;
-    font-size: 52px;
-  }
-
-  .envelope-stage {
-    height: 280px;
-  }
-
-  .envelope-stack {
-    width: min(100%,330px);
-  }
-
-  .wax-seal {
-    width: 48px;
-    height: 48px;
-    font-size: 29px;
-  }
-
-  .preview-text {
-    font-size: 16px;
-  }
-
-  .letter-title {
-    font-size: 29px;
-  }
-
-  .poem-paper {
-    padding: 55px 29px 65px;
-  }
-
-  .poem-paper::before {
-    inset: 11px;
-  }
-
-  .poem-paper::after {
-    inset: 17px;
-  }
-
-  .poem-heading h2 {
-    font-size: 47px;
-  }
-
-  .poem-text {
     font-size: 19px;
-    line-height: 1.85;
   }
 
-  .poem-last-line {
-    font-size: 23px;
-  }
-
-  .poem-signature {
-    font-size: 38px;
-  }
-
-}
-
-@media (max-width: 390px) {
-
-  .lock-panel {
-    padding: 40px 19px;
+  .archive-frame {
+    padding:
+      35px 8px 45px;
   }
 
   .carousel {
     grid-template-columns:
-      27px minmax(0,1fr) 27px;
+      30px minmax(0,1fr) 30px;
+
+    gap: 0;
   }
 
-  .carousel-arrow {
-    width: 27px;
+  .arrow {
+    width: 30px;
     font-size: 44px;
   }
 
@@ -2294,17 +1771,42 @@ input:focus-visible {
     height: 240px;
   }
 
+  .envelope {
+    width: min(100%,300px);
+  }
+
+  .wax-seal {
+    width: 44px;
+    height: 44px;
+
+    font-size: 27px;
+  }
+
+  .letter-preview {
+    font-size: 15px;
+  }
+
   .poem-paper {
-    padding: 48px 23px 55px;
+    padding:
+      45px 25px;
+  }
+
+  .poem-text {
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .final-line {
+    font-size: 22px;
   }
 
 }
 
-/* =====================================================
-   ACCESSIBILITY
-   ===================================================== */
+/* ============================================
+   REDUCED MOTION
+============================================ */
 
-@media (prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion:reduce) {
 
   *,
   *::before,
@@ -2321,141 +1823,133 @@ input:focus-visible {
 
 <body>
 
-<!-- ==================================================
-     ATMOSPHERE
-     ================================================== -->
+<!-- BACKGROUND -->
 
-<div class="room" aria-hidden="true"></div>
+<div class="background"></div>
 
-<div class="ambient-light one" aria-hidden="true"></div>
-<div class="ambient-light two" aria-hidden="true"></div>
-<div class="ambient-light three" aria-hidden="true"></div>
+<div class="candlelight">
 
-<div class="grain" aria-hidden="true"></div>
+  <div class="light one"></div>
 
-<div class="petals" id="petals" aria-hidden="true"></div>
+  <div class="light two"></div>
+
+</div>
+
+<div class="petals" id="petals"></div>
 
 
-<!-- ==================================================
-     DECORATIVE CANDLES
-     ================================================== -->
+<!-- CANDLE -->
 
-<div class="candle-scene right" aria-hidden="true">
+<div class="candle" aria-hidden="true">
 
-  <div class="candle-aura"></div>
+  <div class="candle-glow"></div>
 
   <div class="flame"></div>
-  <div class="flame-core"></div>
 
   <div class="candle-wick"></div>
 
   <div class="candle-wax">
+
     <span class="wax-drip one"></span>
+
     <span class="wax-drip two"></span>
-    <span class="wax-drip three"></span>
+
   </div>
 
-  <div class="candle-stand"></div>
-
-</div>
-
-<div class="candle-scene left" aria-hidden="true">
-
-  <div class="candle-aura"></div>
-
-  <div class="flame"></div>
-  <div class="flame-core"></div>
-
-  <div class="candle-wick"></div>
-
-  <div class="candle-wax">
-    <span class="wax-drip one"></span>
-    <span class="wax-drip two"></span>
-    <span class="wax-drip three"></span>
-  </div>
-
-  <div class="candle-stand"></div>
+  <div class="candle-holder"></div>
 
 </div>
 
 
-<!-- ==================================================
-     PASSWORD SCREEN
-     ================================================== -->
+<!-- ============================================
+     LOCK SCREEN
+============================================ -->
 
 <section
   class="lock-screen"
   id="lockScreen"
-  aria-label="Private archive entrance"
 >
 
-  <div class="lock-panel ornate-frame">
+  <div class="lock-panel">
 
-    <div class="small-caps">
-      A PRIVATE COLLECTION · EST. 1999
+    <div class="small-text">
+      A PRIVATE COLLECTION
     </div>
 
-    <div
-      class="lock-art"
-      id="lockArt"
-      aria-hidden="true"
-    >
+
+    <div class="lock-icon" id="lockIcon">
 
       <div class="lock-shackle"></div>
 
-      <div class="lock-base">
-        <div class="lock-keyhole"></div>
+      <div class="lock-body">
+
+        <div class="keyhole"></div>
+
       </div>
 
     </div>
 
-    <h1 class="lock-heading">
+
+    <h1 class="lock-title">
       letters i never sent.
     </h1>
 
-    <div class="ornament">❦</div>
+
+    <div class="ornament">
+      ❦
+    </div>
+
 
     <p class="lock-description">
+
       Some things were never meant to be found.
+
       <br>
+
       Some words were never meant to be read.
+
       <br><br>
+
       Perhaps you were meant to find them.
+
     </p>
+
 
     <form id="passcodeForm">
 
       <label
+        class="passcode-label small-text"
         for="passcodeInput"
-        class="passcode-label small-caps"
       >
-        Enter the passcode
+        ENTER THE PASSCODE
       </label>
+
 
       <input
         id="passcodeInput"
         class="passcode-input"
         type="password"
         inputmode="numeric"
-        pattern="[0-9]{4}"
         maxlength="4"
+        pattern="[0-9]{4}"
         autocomplete="off"
         placeholder="••••"
-        aria-describedby="lockError"
         required
       >
+
 
       <button
         class="unlock-button"
         id="unlockButton"
         type="submit"
       >
-        Unlock the letters
+        UNLOCK THE LETTERS
       </button>
 
+
       <div
-        class="lock-error"
-        id="lockError"
+        class="error-message"
+        id="errorMessage"
         aria-live="polite"
       ></div>
 
@@ -2466,9 +1960,9 @@ input:focus-visible {
 </section>
 
 
-<!-- ==================================================
+<!-- ============================================
      MAIN WEBSITE
-     ================================================== -->
+============================================ -->
 
 <div
   class="website"
@@ -2476,35 +1970,33 @@ input:focus-visible {
   hidden
 >
 
-  <!-- HEADER -->
+  <header>
 
-  <header class="archive-header">
-
-    <div class="small-caps">
-      A collection of things left unsaid
+    <div class="small-text">
+      A COLLECTION OF THINGS LEFT UNSAID
     </div>
 
     <h1>
       letters i never sent.
     </h1>
 
-    <p class="archive-subtitle">
+    <p class="subtitle">
       an archive of everything i couldn't say.
     </p>
 
-    <div class="header-flourish">
+    <div class="ornament">
       ❦
     </div>
 
   </header>
 
 
-  <!-- MUSIC -->
+  <!-- MUSIC PLAYER -->
 
   <section class="music-section">
 
-    <div class="music-label small-caps">
-      A melody for the melancholy
+    <div class="small-text">
+      A MELODY FOR THE MELANCHOLY
     </div>
 
     <div class="music-card">
@@ -2518,10 +2010,6 @@ input:focus-visible {
 
     </div>
 
-    <p class="music-caption">
-      For the moments when words aren't enough.
-    </p>
-
   </section>
 
 
@@ -2530,61 +2018,45 @@ input:focus-visible {
   <section class="introduction">
 
     Some words were never meant to be spoken.
+
     <br>
+
     Some feelings were never meant to be understood.
 
     <br><br>
 
-    Here lie the letters I could never
-    bring myself to send.
+    Here lie the letters I could never bring myself to send.
 
-    <span class="emphasis">
+    <strong>
       Take one. Open it gently.
-    </span>
+    </strong>
 
   </section>
 
 
   <!-- ARCHIVE -->
 
-  <section
-    class="archive-section"
-    aria-label="Collection of unsent letters"
-  >
+  <section class="archive-section">
 
-    <div class="section-heading">
+    <div class="archive-heading">
 
-      <div class="small-caps">
-        The private archive · Volume I
+      <div class="small-text">
+        THE PRIVATE ARCHIVE
       </div>
 
       <h2>
         A collection of forgotten letters
       </h2>
 
-      <p>
-        Turn the pages of what was never said.
-      </p>
-
     </div>
 
 
-    <!-- ORNATE FRAME -->
-
-    <div class="archive-display">
-
-      <span class="corner top-left"></span>
-      <span class="corner top-right"></span>
-      <span class="corner bottom-left"></span>
-      <span class="corner bottom-right"></span>
-
-
-      <!-- ENVELOPE CAROUSEL -->
+    <div class="archive-frame">
 
       <div class="carousel">
 
         <button
-          class="carousel-arrow prev"
+          class="arrow previous"
           id="previousLetter"
           type="button"
           aria-label="Previous letter"
@@ -2596,51 +2068,27 @@ input:focus-visible {
         <div class="envelope-stage">
 
           <button
-            class="envelope-stack"
-            id="envelopeStack"
+            class="envelope"
+            id="envelope"
             type="button"
-            aria-label="Open selected letter"
+            aria-label="Open letter"
           >
 
-            <!-- ENVELOPES UNDERNEATH -->
+            <span class="stack-layer one"></span>
 
-            <span class="back-envelope first"></span>
-
-            <span class="back-envelope second"></span>
-
-            <span class="back-envelope third"></span>
-
-
-            <!-- SELECTED ENVELOPE -->
+            <span class="stack-layer two"></span>
 
             <span class="envelope-back"></span>
 
-
-            <!-- PAPER INSIDE -->
-
             <span class="letter-preview">
-
-              <span class="preview-decoration">
-                ❦
-              </span>
-
-              <span class="preview-text">
-                a letter for you...
-              </span>
-
+              a letter for you...
             </span>
-
-
-            <!-- ENVELOPE FOLDS -->
 
             <span class="envelope-front"></span>
 
             <span class="envelope-bottom"></span>
 
             <span class="envelope-flap"></span>
-
-
-            <!-- WAX SEAL -->
 
             <span class="wax-seal">
               L
@@ -2652,7 +2100,7 @@ input:focus-visible {
 
 
         <button
-          class="carousel-arrow next"
+          class="arrow next"
           id="nextLetter"
           type="button"
           aria-label="Next letter"
@@ -2663,38 +2111,26 @@ input:focus-visible {
       </div>
 
 
-      <!-- LETTER INFORMATION -->
+      <div class="letter-information">
 
-      <div
-        class="letter-details"
-        id="letterDetails"
-      >
-
-        <span
-          class="letter-counter small-caps"
+        <div
+          class="small-text"
           id="letterCounter"
         >
           LETTER 01 / 02
-        </span>
+        </div>
 
-        <h3
-          class="letter-title"
-          id="letterTitle"
-        >
+        <h3 id="letterTitle">
           The worst daughter in the world
         </h3>
 
         <button
-          class="break-seal"
-          id="breakSealButton"
+          class="open-button"
+          id="openLetter"
           type="button"
         >
-          Break the seal ↗
+          BREAK THE SEAL
         </button>
-
-        <p class="carousel-instruction">
-          Use the arrows to turn through the archive.
-        </p>
 
       </div>
 
@@ -2705,28 +2141,22 @@ input:focus-visible {
 
   <!-- FOOTER -->
 
-  <footer class="site-footer">
+  <footer>
 
-    <p class="footer-quote">
-      For all the things that remained unsaid.
-    </p>
+    For all the things that remained unsaid.
 
-    <div class="ornament">
-      ❦
-    </div>
-
-    <span class="small-caps">
+    <small class="small-text">
       Written with love, and a little grief.
-    </span>
+    </small>
 
   </footer>
 
 </div>
 
 
-<!-- ==================================================
-     LETTER READING VIEW
-     ================================================== -->
+<!-- ============================================
+     POEM OVERLAY
+============================================ -->
 
 <div
   class="poem-overlay"
@@ -2734,16 +2164,15 @@ input:focus-visible {
   role="dialog"
   aria-modal="true"
   aria-label="An unsent letter"
-  aria-hidden="true"
 >
 
-  <article class="poem-paper" id="poemPaper">
+  <article class="poem-paper">
 
     <button
       class="close-poem"
       id="closePoem"
       type="button"
-      aria-label="Close letter"
+      aria-label="Close poem"
     >
       ×
     </button>
@@ -2751,15 +2180,11 @@ input:focus-visible {
 
     <div class="poem-heading">
 
-      <div class="paper-ornament">
-        ❦
-      </div>
-
       <div
-        class="small-caps"
-        style="color:#927252"
+        class="small-text"
+        style="color:#937457"
       >
-        An unsent letter
+        AN UNSENT LETTER
       </div>
 
       <h2 id="poemTitle"></h2>
@@ -2767,8 +2192,6 @@ input:focus-visible {
       <p>
         from the private archive
       </p>
-
-      <div class="poem-divider"></div>
 
     </div>
 
@@ -2779,7 +2202,7 @@ input:focus-visible {
     ></div>
 
 
-    <div class="poem-signature">
+    <div class="signature">
       Yours truly.
     </div>
 
@@ -2790,9 +2213,9 @@ input:focus-visible {
 
 <script>
 
-/* =====================================================
-   PASSWORD SYSTEM
-   ===================================================== */
+/* ============================================
+   PASSWORD
+============================================ */
 
 const CORRECT_PASSCODE = "1999";
 
@@ -2808,26 +2231,27 @@ const passcodeForm =
 const passcodeInput =
   document.getElementById("passcodeInput");
 
-const lockError =
-  document.getElementById("lockError");
+const errorMessage =
+  document.getElementById("errorMessage");
 
-const lockArt =
-  document.getElementById("lockArt");
+const lockIcon =
+  document.getElementById("lockIcon");
 
 const unlockButton =
   document.getElementById("unlockButton");
 
-let isUnlocking = false;
+
+let unlocking = false;
 
 
 passcodeInput.addEventListener("input", () => {
 
   passcodeInput.value =
     passcodeInput.value
-      .replace(/\D/g, "")
+      .replace(/\D/g,"")
       .slice(0,4);
 
-  lockError.textContent = "";
+  errorMessage.textContent = "";
 
 });
 
@@ -2836,56 +2260,40 @@ passcodeForm.addEventListener("submit", (event) => {
 
   event.preventDefault();
 
-  if (isUnlocking) return;
+  if (unlocking) return;
 
-  const enteredPasscode =
-    passcodeInput.value.trim();
+  if (
+    passcodeInput.value === CORRECT_PASSCODE
+  ) {
 
-  if (enteredPasscode === CORRECT_PASSCODE) {
-
-    isUnlocking = true;
+    unlocking = true;
 
     unlockButton.disabled = true;
 
-    lockError.textContent =
-      "The archive is yours to read.";
-
-    lockArt.classList.add("unlocked");
+    lockIcon.classList.add("unlocked");
 
     setTimeout(() => {
 
-      lockScreen.style.transition =
-        "opacity .9s ease, transform .9s ease";
+      lockScreen.hidden = true;
 
-      lockScreen.style.opacity = "0";
+      website.hidden = false;
 
-      lockScreen.style.transform =
-        "translateY(-30px)";
+      window.scrollTo(0,0);
 
-      setTimeout(() => {
-
-        lockScreen.hidden = true;
-
-        website.hidden = false;
-
-        window.scrollTo(0,0);
-
-      },900);
-
-    },850);
+    },1000);
 
   } else {
 
-    lockError.textContent =
+    errorMessage.textContent =
       "That isn't the right key.";
 
     passcodeInput.value = "";
 
-    lockArt.classList.remove("shake");
+    lockIcon.classList.remove("shake");
 
-    void lockArt.offsetWidth;
+    void lockIcon.offsetWidth;
 
-    lockArt.classList.add("shake");
+    lockIcon.classList.add("shake");
 
     passcodeInput.focus();
 
@@ -2894,20 +2302,14 @@ passcodeForm.addEventListener("submit", (event) => {
 });
 
 
-/* =====================================================
-   POETRY ARCHIVE
-
-   Add new poems to this array in the future.
-   The carousel updates its total automatically.
-   ===================================================== */
+/* ============================================
+   POEMS
+============================================ */
 
 const poems = [
 
-  /* ==========================================
-     LETTER 001
-     ========================================== */
-
   {
+
     title: "The worst daughter in the world",
 
     text: `We don’t talk anymore.
@@ -2985,14 +2387,11 @@ I wish I knew how to tell you.
 But I can’t even pick up the phone.
 
 And that makes me`
+
   },
 
-
-  /* ==========================================
-     LETTER 002
-     ========================================== */
-
   {
+
     title: "Your Pink Urn",
 
     text: `I can't stop hearing the noises of her laughter, too cruel.
@@ -3009,23 +2408,29 @@ All that remains are the ashes trapped in your pink urn, now cruel.
 
 I miss the smell of your baking. Sweet cinnamon inhaled. Exhaled.
 Is it true that you're really gone? Is it true? Cruel.`
+
   }
 
 ];
 
 
-/* =====================================================
-   CAROUSEL REFERENCES
-   ===================================================== */
+/* ============================================
+   CAROUSEL
+============================================ */
 
-const envelopeStack =
-  document.getElementById("envelopeStack");
+let currentLetter = 0;
 
-const previousLetter =
-  document.getElementById("previousLetter");
+let changing = false;
 
-const nextLetter =
-  document.getElementById("nextLetter");
+let opening = false;
+
+let openTimer = null;
+
+let lastFocused = null;
+
+
+const envelope =
+  document.getElementById("envelope");
 
 const letterTitle =
   document.getElementById("letterTitle");
@@ -3033,17 +2438,8 @@ const letterTitle =
 const letterCounter =
   document.getElementById("letterCounter");
 
-const letterDetails =
-  document.getElementById("letterDetails");
-
-const breakSealButton =
-  document.getElementById("breakSealButton");
-
 const poemOverlay =
   document.getElementById("poemOverlay");
-
-const poemPaper =
-  document.getElementById("poemPaper");
 
 const poemTitle =
   document.getElementById("poemTitle");
@@ -3055,27 +2451,10 @@ const closePoemButton =
   document.getElementById("closePoem");
 
 
-let currentLetter = 0;
-
-let isChanging = false;
-
-let isOpening = false;
-
-let openingTimer = null;
-
-let lastFocusedElement = null;
-
-
-/* =====================================================
-   RENDER SELECTED LETTER
-   ===================================================== */
-
 function renderLetter() {
 
-  const poem = poems[currentLetter];
-
   letterTitle.textContent =
-    poem.title;
+    poems[currentLetter].title;
 
   letterCounter.textContent =
     "LETTER " +
@@ -3083,47 +2462,34 @@ function renderLetter() {
     " / " +
     String(poems.length).padStart(2,"0");
 
-  envelopeStack.setAttribute(
+  envelope.setAttribute(
     "aria-label",
-    "Open " + poem.title
+    "Open " + poems[currentLetter].title
   );
 
 }
 
 
-/* =====================================================
-   CHANGE LETTER WITH ANIMATION
-   ===================================================== */
-
 function changeLetter(direction) {
 
-  if (isChanging || isOpening) {
-    return;
-  }
+  if (changing || opening) return;
 
-  isChanging = true;
+  changing = true;
 
-  envelopeStack.classList.remove(
+  envelope.classList.remove(
     "slide-next",
-    "slide-prev",
+    "slide-previous",
     "open"
   );
 
-  letterDetails.classList.add("changing");
+  void envelope.offsetWidth;
 
-  void envelopeStack.offsetWidth;
-
-  const animationClass =
+  const animation =
     direction > 0
       ? "slide-next"
-      : "slide-prev";
+      : "slide-previous";
 
-  envelopeStack.classList.add(
-    animationClass
-  );
-
-  /* Switch the selected letter at the
-     midpoint of the movement. */
+  envelope.classList.add(animation);
 
   setTimeout(() => {
 
@@ -3136,68 +2502,60 @@ function changeLetter(direction) {
 
     renderLetter();
 
-  }, 290);
-
-  /* Finish animation */
+  },300);
 
   setTimeout(() => {
 
-    envelopeStack.classList.remove(
-      animationClass
-    );
+    envelope.classList.remove(animation);
 
-    letterDetails.classList.remove(
-      "changing"
-    );
+    changing = false;
 
-    isChanging = false;
-
-  }, 760);
+  },700);
 
 }
 
 
-previousLetter.addEventListener(
+document.getElementById(
+  "previousLetter"
+).addEventListener(
   "click",
   () => changeLetter(-1)
 );
 
-nextLetter.addEventListener(
+
+document.getElementById(
+  "nextLetter"
+).addEventListener(
   "click",
   () => changeLetter(1)
 );
 
 
-/* =====================================================
-   OPEN ENVELOPE
-   ===================================================== */
+/* ============================================
+   OPEN LETTER
+============================================ */
 
 function openLetter() {
 
-  if (isChanging || isOpening) {
-    return;
-  }
+  if (changing || opening) return;
 
-  isOpening = true;
+  opening = true;
 
-  lastFocusedElement =
+  lastFocused =
     document.activeElement;
 
-  envelopeStack.classList.add("open");
+  envelope.classList.add("open");
 
-  openingTimer = setTimeout(() => {
+  openTimer = setTimeout(() => {
 
-    const selectedPoem =
+    const selected =
       poems[currentLetter];
 
     poemTitle.textContent =
-      selectedPoem.title;
+      selected.title;
 
     poemText.textContent =
-      selectedPoem.text;
-
-    /* Give the final unfinished line
-       of the dad poem its own space. */
+      selected.text;
 
     if (currentLetter === 0) {
 
@@ -3205,11 +2563,11 @@ function openLetter() {
         "And that makes me";
 
       if (
-        selectedPoem.text.endsWith(ending)
+        selected.text.endsWith(ending)
       ) {
 
         const mainText =
-          selectedPoem.text.slice(
+          selected.text.slice(
             0,
             -ending.length
           ).trimEnd();
@@ -3221,7 +2579,7 @@ function openLetter() {
           document.createElement("span");
 
         finalLine.className =
-          "poem-last-line";
+          "final-line";
 
         finalLine.textContent =
           ending;
@@ -3236,11 +2594,6 @@ function openLetter() {
       "visible"
     );
 
-    poemOverlay.setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
     poemOverlay.scrollTop = 0;
 
     document.body.classList.add(
@@ -3249,63 +2602,56 @@ function openLetter() {
 
     closePoemButton.focus();
 
-    openingTimer = null;
+    opening = false;
 
-    isOpening = false;
+    openTimer = null;
 
-  }, 1150);
+  },1050);
 
 }
 
 
-envelopeStack.addEventListener(
-  "click",
-  openLetter
-);
-
-breakSealButton.addEventListener(
+envelope.addEventListener(
   "click",
   openLetter
 );
 
 
-/* =====================================================
+document.getElementById(
+  "openLetter"
+).addEventListener(
+  "click",
+  openLetter
+);
+
+
+/* ============================================
    CLOSE LETTER
-   ===================================================== */
+============================================ */
 
 function closeLetter() {
 
-  if (openingTimer) {
-
-    clearTimeout(openingTimer);
-
-    openingTimer = null;
-
+  if (openTimer) {
+    clearTimeout(openTimer);
+    openTimer = null;
   }
 
   poemOverlay.classList.remove(
     "visible"
   );
 
-  poemOverlay.setAttribute(
-    "aria-hidden",
-    "true"
-  );
-
   document.body.classList.remove(
     "modal-open"
   );
 
-  envelopeStack.classList.remove(
+  envelope.classList.remove(
     "open"
   );
 
-  isOpening = false;
+  opening = false;
 
-  if (lastFocusedElement) {
-
-    lastFocusedElement.focus();
-
+  if (lastFocused) {
+    lastFocused.focus();
   }
 
 }
@@ -3321,19 +2667,19 @@ poemOverlay.addEventListener(
   "click",
   (event) => {
 
-    if (event.target === poemOverlay) {
-
+    if (
+      event.target === poemOverlay
+    ) {
       closeLetter();
-
     }
 
   }
 );
 
 
-/* =====================================================
-   KEYBOARD ACCESSIBILITY
-   ===================================================== */
+/* ============================================
+   KEYBOARD CONTROLS
+============================================ */
 
 document.addEventListener(
   "keydown",
@@ -3346,142 +2692,53 @@ document.addEventListener(
     ) {
 
       if (event.key === "Escape") {
-
         closeLetter();
-
       }
 
       if (event.key === "Tab") {
-
         event.preventDefault();
-
         closePoemButton.focus();
-
       }
 
       return;
 
     }
 
-    if (website.hidden) {
-      return;
-    }
-
-    const active =
-      document.activeElement;
-
-    const typing =
-      active &&
-      (
-        active.tagName === "INPUT" ||
-        active.tagName === "TEXTAREA"
-      );
-
-    if (typing) {
-      return;
-    }
+    if (website.hidden) return;
 
     if (event.key === "ArrowRight") {
-
       changeLetter(1);
-
     }
 
     if (event.key === "ArrowLeft") {
-
       changeLetter(-1);
-
     }
 
   }
 );
 
 
-/* =====================================================
-   MOBILE SWIPE SUPPORT
-   ===================================================== */
-
-let touchStartX = 0;
-let touchStartY = 0;
-
-envelopeStack.addEventListener(
-  "touchstart",
-  (event) => {
-
-    touchStartX =
-      event.changedTouches[0].screenX;
-
-    touchStartY =
-      event.changedTouches[0].screenY;
-
-  },
-  { passive: true }
-);
-
-
-envelopeStack.addEventListener(
-  "touchend",
-  (event) => {
-
-    const touchEndX =
-      event.changedTouches[0].screenX;
-
-    const touchEndY =
-      event.changedTouches[0].screenY;
-
-    const differenceX =
-      touchEndX - touchStartX;
-
-    const differenceY =
-      touchEndY - touchStartY;
-
-    if (
-      Math.abs(differenceX) > 55 &&
-      Math.abs(differenceX) >
-      Math.abs(differenceY)
-    ) {
-
-      /* Prevent the swipe from
-         accidentally opening a letter. */
-
-      event.preventDefault();
-
-      changeLetter(
-        differenceX < 0 ? 1 : -1
-      );
-
-    }
-
-  },
-  { passive: false }
-);
-
-
-/* =====================================================
-   FALLING ROSE PETALS
-   ===================================================== */
+/* ============================================
+   ROSE PETALS
+============================================ */
 
 const petalsContainer =
   document.getElementById("petals");
 
-const prefersReducedMotion =
+const reducedMotion =
   window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
 
-if (!prefersReducedMotion) {
+if (!reducedMotion) {
 
-  const petalCount =
+  const count =
     window.innerWidth < 600
-      ? 18
-      : 30;
+      ? 16
+      : 25;
 
-  for (
-    let i = 0;
-    i < petalCount;
-    i++
-  ) {
+  for (let i = 0; i < count; i++) {
 
     const petal =
       document.createElement("span");
@@ -3489,7 +2746,7 @@ if (!prefersReducedMotion) {
     petal.className = "petal";
 
     const size =
-      9 + Math.random() * 19;
+      9 + Math.random() * 17;
 
     petal.style.width =
       size + "px";
@@ -3508,14 +2765,11 @@ if (!prefersReducedMotion) {
 
     petal.style.animationDelay =
       (
-        -Math.random() * 32
+        -Math.random() * 30
       ) + "s";
 
     petal.style.opacity =
-      (
-        .18 +
-        Math.random() * .42
-      );
+      .2 + Math.random() * .4;
 
     petalsContainer.appendChild(
       petal
@@ -3526,9 +2780,9 @@ if (!prefersReducedMotion) {
 }
 
 
-/* =====================================================
-   INITIALIZE ARCHIVE
-   ===================================================== */
+/* ============================================
+   INITIALIZE
+============================================ */
 
 renderLetter();
 
